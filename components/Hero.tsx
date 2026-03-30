@@ -97,8 +97,7 @@ export default function Hero() {
               }}
             >
               ED &amp; SD
-            </em>
-            <br />
+            </em>{" "}
             <span style={{ opacity: 0.7 }}>
               Experts for South Africa&apos;s Mining Sector
             </span>
