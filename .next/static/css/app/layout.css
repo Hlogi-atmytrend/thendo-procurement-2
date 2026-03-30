@@ -1,0 +1,230 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/next@15.5.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/.pnpm/next@15.5.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./app/globals.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* ── Design Tokens ─────────────────────────────────────────────
+   Thendo Procurement — confirmed style guide
+   Single source of truth for all visual design values.
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /* Colors — primary palette (style guide) */
+  --primary: #c9a84c;
+  --primary-hover: #b8963e;
+  --primary-light: #e8d5b7;
+  --primary-foreground: #0a0a0a;
+
+  /* Colors — surfaces (style guide) */
+  --background: #f5f5f5;
+  --surface: #ffffff;
+  --surface-alt: #efefef;
+  --surface-dark: #0a0a0a;
+  --surface-dark-2: #1a1a1a;
+  --surface-glass: rgba(255, 255, 255, 0.04);
+  --surface-glass-border: rgba(201, 168, 76, 0.25);
+
+  /* Colors — text (style guide) */
+  --text-primary: #0a0a0a;
+  --text-muted: #555555;
+  --text-subtle: #888888;
+  --text-on-dark: #ffffff;
+  --text-on-dark-muted: rgba(255, 255, 255, 0.72);
+  --text-on-dark-subtle: rgba(255, 255, 255, 0.35);
+
+  /* Colors — borders (style guide) */
+  --border: #f5f5f5;
+  --border-mid: #e0e0e0;
+  --border-gold: rgba(201, 168, 76, 0.4);
+  --border-gold-subtle: rgba(201, 168, 76, 0.2);
+
+  /* Typography — premium sans-serif pairing
+     Heading: Satoshi Light — geometric, airy, distinctly premium
+     Body:    General Sans — clean, readable, professional              */
+  --font-heading: 'Satoshi', 'Inter', system-ui, sans-serif;
+  --font-body: 'General Sans', 'Inter', system-ui, sans-serif;
+
+  /* Heading weight — single token so every heading updates together */
+  --heading-weight: 300;
+
+  /* Radii (style guide) */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows (style guide) */
+  --shadow-sm: 0 1px 3px hsla(0, 0%, 20%, 0.08), 0 1px 2px hsla(0, 0%, 20%, 0.06);
+  --shadow-md: 0 4px 12px hsla(0, 0%, 20%, 0.12), 0 2px 4px hsla(0, 0%, 20%, 0.08);
+  --shadow-lg: 0 8px 24px hsla(0, 0%, 20%, 0.16), 0 4px 8px hsla(0, 0%, 20%, 0.10);
+  --shadow-xl: 0 16px 48px hsla(0, 0%, 20%, 0.20), 0 8px 16px hsla(0, 0%, 20%, 0.12);
+  --shadow-gold: 0 0 30px rgba(201, 168, 76, 0.2), 0 0 60px rgba(201, 168, 76, 0.08);
+  --shadow-gold-sm: 0 0 12px rgba(201, 168, 76, 0.3);
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Satoshi Light — heading base style ────────────────────── */
+.font-heading, h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.025em;
+}
+
+/* ── Hero entrance animations ───────────────────────────────── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+.hero-anim-1 { opacity: 0; animation: heroFadeUp 0.6s ease-out 0.05s forwards; }
+.hero-anim-2 { opacity: 0; animation: heroFadeUp 0.7s ease-out 0.2s forwards; }
+.hero-anim-3 { opacity: 0; animation: heroFadeUp 0.7s ease-out 0.35s forwards; }
+.hero-anim-4 { opacity: 0; animation: heroFadeUp 0.65s ease-out 0.5s forwards; }
+.hero-anim-5 { opacity: 0; animation: heroFadeIn 0.8s ease-out 0.7s forwards; }
+.hero-scroll-indicator { opacity: 0; animation: heroFadeIn 0.6s ease-out 1.2s forwards; }
+.hero-scroll-bounce { animation: scrollBounce 1.6s ease-in-out infinite; }
+
+/* ── Scroll reveal base states ──────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal="up"]    { transform: translateY(36px); }
+[data-reveal="left"]  { transform: translateX(-36px); }
+[data-reveal="right"] { transform: translateX(36px); }
+[data-reveal="scale"] { transform: scale(0.94); }
+[data-reveal="fade"]  {}
+
+[data-reveal].in-view { opacity: 1; transform: none; }
+
+/* ── Stagger children ───────────────────────────────────────── */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+[data-stagger].in-view > *:nth-child(1) { transition-delay: 0ms; }
+[data-stagger].in-view > *:nth-child(2) { transition-delay: 110ms; }
+[data-stagger].in-view > *:nth-child(3) { transition-delay: 220ms; }
+[data-stagger].in-view > *:nth-child(4) { transition-delay: 330ms; }
+[data-stagger].in-view > *:nth-child(5) { transition-delay: 440ms; }
+[data-stagger].in-view > *:nth-child(6) { transition-delay: 550ms; }
+[data-stagger].in-view > * { opacity: 1; transform: none; }
+
+/* ── Gold glow pulse ────────────────────────────────────────── */
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.3); }
+  50%       { box-shadow: 0 0 28px rgba(201, 168, 76, 0.55); }
+}
+.gold-pulse { animation: goldPulse 3s ease-in-out infinite; }
+
+/* ── Gold divider line ───────────────────────────────────────── */
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  border-radius: 1px;
+}
+
+/* ── Glassmorphism card ──────────────────────────────────────── */
+.glass-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .gold-pulse { animation: none !important; }
+  .hero-anim-1, .hero-anim-2, .hero-anim-3,
+  .hero-anim-4, .hero-anim-5, .hero-scroll-indicator {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
+/* ── Counter number style ────────────────────────────────────── */
+.counter-num {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection { background: rgba(201, 168, 76, 0.35); color: #0a0a0a; }
+
+/* ── Focus rings ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Light section form inputs ───────────────────────────────── */
+.tp-input-light {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.tp-input-light::placeholder { color: var(--text-subtle); }
+.tp-input-light:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+}
+.tp-input-light option { background: var(--surface); color: var(--text-primary); }
+
+/* ── Dark section form inputs ────────────────────────────────── */
+.tp-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-on-dark);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.tp-input::placeholder { color: var(--text-on-dark-subtle); }
+.tp-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+.tp-input option { background: var(--surface-dark); color: var(--text-on-dark); }
